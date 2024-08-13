@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descarte de Lixo Eletrônico</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .watermark {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.1;
+            font-size: 5em;
+            color: #007BFF;
+            transform: rotate(-45deg);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Descarte de Lixo Eletrônico</h1>
+
+        <form id="descarteForm">
+            <div class="section">
+                <h2>Categoria do Item</h2>
+                <label>
+                    <input type="radio" name="categoria" value="1"> Computadores e periféricos (monitores, teclados, mouses)
+                </label>
+                <label>
+                    <input type="radio" name="categoria" value="2"> Dispositivos móveis (celulares, tablets)
+                </label>
+                <label>
+                    <input type="radio" name="categoria" value="3"> Eletrodomésticos (micro-ondas, televisores)
+                </label>
+                <label>
+                    <input type="radio" name="categoria" value="4"> Baterias e pilhas (de celulares, laptops)
+                </label>
+                <label>
+                    <input type="radio" name="categoria" value="5"> Equipamentos de áudio e vídeo (rádios, câmeras)
+                </label>
+            </div>
+
+            <div class="section">
+                <h2>Localização</h2>
+                <label>
+                    <input type="radio" name="localizacao" value="1"> Norte: Supermercado Bresser na Rua Bresser
+                </label>
+                <label>
+                    <input type="radio" name="localizacao" value="2"> Sul: Edifício Comercial São Luiz na Rua do Oratório
+                </label>
+                <label>
+                    <input type="radio" name="localizacao" value="3"> Leste: Mercado Extra na Avenida Alcântara Machado
+                </label>
+                <label>
+                    <input type="radio" name="localizacao" value="4"> Oeste: Supermercado Dia na Rua Itajubá
+                </label>
+            </div>
+
+            <button type="button" onclick="mostrarPontos()">Ver Pontos de Descarte</button>
+        </form>
+
+        <div id="resultado" class="resultado">
+            <!-- Resultado será exibido aqui -->
+        </div>
+        
+        <div class="footer">
+            <p>Responsável por este site: Equipe Environment Tech</p>
+        </div>
+    </div>
+
+    <div class="watermark">E.T.</div>
+
+    <script>
+        function mostrarPontos() {
+            const categorias = {
+                "1": "Computadores e periféricos",
+                "2": "Dispositivos móveis",
+                "3": "Eletrodomésticos",
+                "4": "Baterias e pilhas",
+                "5": "Equipamentos de áudio e vídeo"
+            };
+
+            const pontos_descarte = {
+                "1": {
+                    "Computadores e periféricos": ["Loja Tech Info", "Centro de Reciclagem Bresser"],
+                    "Dispositivos móveis": ["Loja Mobile Express", "Centro de Coleta Móvel Bresser"],
+                    "Eletrodomésticos": ["EletroShop Bresser", "Ponto de Reciclagem Eletro Bresser"],
+                    "Baterias e pilhas": ["ReciclaPilhas Bresser", "BateriaPoint Bresser"],
+                    "Equipamentos de áudio e vídeo": ["ÁudioVisual Bresser", "ReciclaSom Bresser"]
+                },
+                "2": {
+                    "Computadores e periféricos": ["Loja Tech Sul", "Centro de Reciclagem São Luiz"],
+                    "Dispositivos móveis": ["MobileCenter Sul", "Centro de Coleta Móvel São Luiz"],
+                    "Eletrodomésticos": ["EletroShop São Luiz", "Ponto de Reciclagem Eletro São Luiz"],
+                    "Baterias e pilhas": ["ReciclaPilhas São Luiz", "BateriaPoint São Luiz"],
+                    "Equipamentos de áudio e vídeo": ["ÁudioVisual São Luiz", "ReciclaSom São Luiz"]
+                },
+                "3": {
+                    "Computadores e periféricos": ["Loja Tech Leste", "Centro de Reciclagem Extra"],
+                    "Dispositivos móveis": ["MobileCenter Leste", "Centro de Coleta Móvel Extra"],
+                    "Eletrodomésticos": ["EletroShop Extra", "Ponto de Reciclagem Eletro Extra"],
+                    "Baterias e pilhas": ["ReciclaPilhas Extra", "BateriaPoint Extra"],
+                    "Equipamentos de áudio e vídeo": ["ÁudioVisual Extra", "ReciclaSom Extra"]
+                },
+                "4": {
+                    "Computadores e periféricos": ["Loja Tech Oeste", "Centro de Reciclagem Dia"],
+                    "Dispositivos móveis": ["MobileCenter Oeste", "Centro de Coleta Móvel Dia"],
+                    "Eletrodomésticos": ["EletroShop Dia", "Ponto de Reciclagem Eletro Dia"],
+                    "Baterias e pilhas": ["ReciclaPilhas Dia", "BateriaPoint Dia"],
+                    "Equipamentos de áudio e vídeo": ["ÁudioVisual Dia", "ReciclaSom Dia"]
+                }
+            };
+
+            const categoria = document.querySelector('input[name="categoria"]:checked')?.value;
+            const localizacao = document.querySelector('input[name="localizacao"]:checked')?.value;
+
+            const resultadoDiv = document.getElementById("resultado");
+            resultadoDiv.innerHTML = "";
+
+            if (categoria && localizacao) {
+                const categoria_nome = categorias[categoria];
+                const pontos = pontos_descarte[localizacao][categoria_nome];
+                resultadoDiv.innerHTML = `
+                    <h2>Você pode descartar seu item nos seguintes locais próximos:</h2>
+                    <ul>
+                        ${pontos.map(ponto => `<li>${ponto}</li>`).join('')}
+                    </ul>
+                `;
+            } else {
+                resultadoDiv.innerHTML = "<p>Por favor, selecione uma categoria e uma localização.</p>";
+            }
+        }
+    </script>
+</body>
+</html>
+
